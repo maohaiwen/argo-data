@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="js/echarts.common.min.js"></script>
+<script src="js/jquery.js"></script>
+
+<script type="text/javascript">
+
+	function init() {
+		initSelect();
+	}
+	
+	function refreshChart(data) {
+		var chart = echarts.init(document.getElementById('charts'));
+		var dateList = data[0].dateList;
+
+		var option = {
+			title : {
+				text : ''
+			},
+			tooltip : {
+				trigger : 'axis'
+			},
+			legend : {
+				data : [ 'average preesure', 'min preesure', 'max preesure', 
+				         'average temperature', 'min temperature', 'max temperature', 
+				         'average salinity', 'min salinity', 'max salinity']
+			},
+			grid : {
+				left : '3%',
+				right : '4%',
+				bottom : '3%',
+				containLabel : true
+			},
+			toolbox : {
+				feature : {
+					saveAsImage : {}
+				}
+			},
+			xAxis : {
+				type : 'category',
+				boundaryGap : false,
+				data : dateList
+			},
+			yAxis : {
+				type : 'value'
+			},
+			series : [ {
+				name : 'average preesure',
+				type : 'line',
+				stack : '总量',
+				data : data[0].avgPreesureList
+			}, {
+				name : 'min preesure',
+				type : 'line',
+				stack : '总量',
+				data : data[0].minPreesureList
+			}, {
+				name : 'max preesure',
+				type : 'line',
+				stack : '总量',
+				data : data[0].maxPreesureList
+			}, {
+				name : 'average temperature',
+				type : 'line',
+				stack : '总量',
+				data : data[0].avgTemperatureList
+			}, {
+				name : 'min temperature',
+				type : 'line',
+				stack : '总量',
+				data : data[0].minTemperatureList
+			}, {
+				name : 'max temperature',
+				type : 'line',
+				stack : '总量',
+				data : data[0].maxTemperatureList
+			}, {
+				name : 'average salinity',
+				type : 'line',
+				stack : '总量',
+				data : data[0].avgSalinityList
+			}, {
+				name : 'min salinity',
+				type : 'line',
+				stack : '总量',
+				data : data[0].minSalinityList
+			}, {
+				name : 'max salinity',
+				type : 'line',
+				stack : '总量',
+				data : data[0].maxSalinityList
+			} ]
+		};
+
+		chart.setOption(option);
+	}
+	
+	function initSelect() {
+		$.get("http://localhost:8080/argo/data/getAllPlatformNumbers",function(data){
+			for (var i = 0 ; i < data.length ; i ++) {
+				$("#platformNumber").append("<option value="+data[i]+">" + data[i]+ "</option>");
+			}
+		})
+	}
+
+	function query() {
+		var platformNumber = $("#platformNumber").val();
+		var dateFrom = $("#dateFrom").val();
+		var dateTo = $("#dateTo").val();
+
+		$.get("http://localhost:8080/argo/data/getData", {
+			"platformNumber" : platformNumber,
+			"dateFrom" : dateFrom,
+			"dateTo" : dateTo
+		}, function(data) {
+			refreshChart(data);
+		});
+	}
+
+	window.onload = function() {
+		init();
+	}
+</script>
+
+</head>
+
+<body>
+	<div style="">
+		<table>
+			<tr>
+				<td>platformNumber:</td>
+				<td>
+				<select id="platformNumber">
+					<option value="-1">--请选择--</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td>dateFrom:</td>
+				<td><input id="dateFrom" type="date" /></td>
+			</tr>
+			<tr>
+				<td>dateTo:</td>
+				<td><input id="dateTo" type="date" /></td>
+			</tr>
+			<tr>
+				<td>maxLong</td>
+				<td><input id="maxLong" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" value="query" onclick="query()" /></td>
+			</tr>
+		</table>
+	</div>
+	<div id="charts" style="width: 1200px; height: 450px;"></div>
+
+</body>
+</html>
