@@ -9,24 +9,24 @@ public class ArgoDataResponseVo {
 
 	private List<String> dateList = new ArrayList<>();
 	
-	private List<Double> avgPreesureList = new ArrayList<>();
+	private List<String> avgPreesureList = new ArrayList<>();
 	
-	private List<Double> minPreesureList = new ArrayList<>();
+	private List<String> minPreesureList = new ArrayList<>();
 	
-	private List<Double> maxPreesureList = new ArrayList<>();
+	private List<String> maxPreesureList = new ArrayList<>();
 
 	
-	private List<Double> avgTemperatureList = new ArrayList<>();
+	private List<String> avgTemperatureList = new ArrayList<>();
 	
-	private List<Double> minTemperatureList = new ArrayList<>();
+	private List<String> minTemperatureList = new ArrayList<>();
 	
-	private List<Double> maxTemperatureList = new ArrayList<>();
+	private List<String> maxTemperatureList = new ArrayList<>();
 	
-	private List<Double> avgSalinityList = new ArrayList<>();
+	private List<String> avgSalinityList = new ArrayList<>();
 	
-	private List<Double> minSalinityList = new ArrayList<>();
+	private List<String> minSalinityList = new ArrayList<>();
 	
-	private List<Double> maxSalinityList = new ArrayList<>();
+	private List<String> maxSalinityList = new ArrayList<>();
 
 	public String getPlatformNumber() {
 		return platformNumber;
@@ -44,78 +44,76 @@ public class ArgoDataResponseVo {
 		this.dateList = dateList;
 	}
 
-	public List<Double> getAvgPreesureList() {
+	public List<String> getAvgPreesureList() {
 		return avgPreesureList;
 	}
 
-	public void setAvgPreesureList(List<Double> avgPreesureList) {
+	public void setAvgPreesureList(List<String> avgPreesureList) {
 		this.avgPreesureList = avgPreesureList;
 	}
 
-	public List<Double> getMinPreesureList() {
+	public List<String> getMinPreesureList() {
 		return minPreesureList;
 	}
 
-	public void setMinPreesureList(List<Double> minPreesureList) {
+	public void setMinPreesureList(List<String> minPreesureList) {
 		this.minPreesureList = minPreesureList;
 	}
 
-	public List<Double> getMaxPreesureList() {
+	public List<String> getMaxPreesureList() {
 		return maxPreesureList;
 	}
 
-	public void setMaxPreesureList(List<Double> maxPreesureList) {
+	public void setMaxPreesureList(List<String> maxPreesureList) {
 		this.maxPreesureList = maxPreesureList;
 	}
 
-	public List<Double> getAvgTemperatureList() {
+	public List<String> getAvgTemperatureList() {
 		return avgTemperatureList;
 	}
 
-	public void setAvgTemperatureList(List<Double> avgTemperatureList) {
+	public void setAvgTemperatureList(List<String> avgTemperatureList) {
 		this.avgTemperatureList = avgTemperatureList;
 	}
 
-	public List<Double> getMinTemperatureList() {
+	public List<String> getMinTemperatureList() {
 		return minTemperatureList;
 	}
 
-	public void setMinTemperatureList(List<Double> minTemperatureList) {
+	public void setMinTemperatureList(List<String> minTemperatureList) {
 		this.minTemperatureList = minTemperatureList;
 	}
 
-	public List<Double> getMaxTemperatureList() {
+	public List<String> getMaxTemperatureList() {
 		return maxTemperatureList;
 	}
 
-	public void setMaxTemperatureList(List<Double> maxTemperatureList) {
+	public void setMaxTemperatureList(List<String> maxTemperatureList) {
 		this.maxTemperatureList = maxTemperatureList;
 	}
 
-	public List<Double> getAvgSalinityList() {
+	public List<String> getAvgSalinityList() {
 		return avgSalinityList;
 	}
 
-	public void setAvgSalinityList(List<Double> avgSalinityList) {
+	public void setAvgSalinityList(List<String> avgSalinityList) {
 		this.avgSalinityList = avgSalinityList;
 	}
 
-	public List<Double> getMinSalinityList() {
+	public List<String> getMinSalinityList() {
 		return minSalinityList;
 	}
 
-	public void setMinSalinityList(List<Double> minSalinityList) {
+	public void setMinSalinityList(List<String> minSalinityList) {
 		this.minSalinityList = minSalinityList;
 	}
 
-	public List<Double> getMaxSalinityList() {
+	public List<String> getMaxSalinityList() {
 		return maxSalinityList;
 	}
 
-	public void setMaxSalinityList(List<Double> maxSalinityList) {
+	public void setMaxSalinityList(List<String> maxSalinityList) {
 		this.maxSalinityList = maxSalinityList;
 	}
 
-	
-	
 }

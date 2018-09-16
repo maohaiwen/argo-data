@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -301,21 +302,23 @@ public class ArgoDataHandler {
 			List<String> dateList = new ArrayList<>();
 
 			Map<String, List<ArgoData>> groupMap = list.stream().collect(Collectors.groupingBy(ArgoData::getDate, TreeMap::new, Collectors.toList()));
-
+			DecimalFormat df = new DecimalFormat("#.000");
 			try {
 				groupMap.forEach((date, argoList)->{
 					dateList.add(date);
-					vo.getAvgPreesureList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getPreesure())).average().getAsDouble());
-					vo.getMinPreesureList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getPreesure())).min().getAsDouble());
-					vo.getMaxPreesureList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getPreesure())).max().getAsDouble());
+				
+					
+					vo.getAvgPreesureList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getPreesure())).average().getAsDouble()));
+					vo.getMinPreesureList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getPreesure())).min().getAsDouble()));
+					vo.getMaxPreesureList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getPreesure())).max().getAsDouble()));
 
-					vo.getAvgTemperatureList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getTemperature())).average().getAsDouble());
-					vo.getMinTemperatureList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getTemperature())).min().getAsDouble());
-					vo.getMaxTemperatureList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getTemperature())).max().getAsDouble());
+					vo.getAvgTemperatureList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getTemperature())).average().getAsDouble()));
+					vo.getMinTemperatureList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getTemperature())).min().getAsDouble()));
+					vo.getMaxTemperatureList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getTemperature())).max().getAsDouble()));
 
-					vo.getAvgSalinityList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getSalinity())).average().getAsDouble());
-					vo.getMinSalinityList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getSalinity())).min().getAsDouble());
-					vo.getMaxSalinityList().add(argoList.stream().mapToDouble(item->Double.valueOf(item.getSalinity())).max().getAsDouble());
+					vo.getAvgSalinityList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getSalinity())).average().getAsDouble()));
+					vo.getMinSalinityList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getSalinity())).min().getAsDouble()));
+					vo.getMaxSalinityList().add(df.format(argoList.stream().mapToDouble(item->Double.valueOf(item.getSalinity())).max().getAsDouble()));
 				});
 			}catch(Exception e) {
 				e.printStackTrace();

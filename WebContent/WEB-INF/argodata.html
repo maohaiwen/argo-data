@@ -40,58 +40,68 @@
 					saveAsImage : {}
 				}
 			},
+			tooltip:{
+
+			　　　　trigger:'axis'
+
+			　　　},
 			xAxis : {
 				type : 'category',
 				boundaryGap : false,
 				data : dateList
 			},
+			dataZoom:[{
+
+			　　　　type:"inside"         //详细配置可见echarts官网
+
+			　　　}],
 			yAxis : {
 				type : 'value'
 			},
 			series : [ {
 				name : 'average preesure',
 				type : 'line',
-				stack : '总量',
+				stack : '总量1',
 				data : data[0].avgPreesureList
 			}, {
 				name : 'min preesure',
 				type : 'line',
-				stack : '总量',
+				stack : '总量2',
 				data : data[0].minPreesureList
 			}, {
 				name : 'max preesure',
 				type : 'line',
-				stack : '总量',
+				stack : '总量3',
 				data : data[0].maxPreesureList
 			}, {
 				name : 'average temperature',
 				type : 'line',
-				stack : '总量',
+				stack : '总量4',
 				data : data[0].avgTemperatureList
 			}, {
 				name : 'min temperature',
 				type : 'line',
-				stack : '总量',
+				stack : '总量5',
 				data : data[0].minTemperatureList
 			}, {
 				name : 'max temperature',
 				type : 'line',
-				stack : '总量',
+				stack : '总量6',
 				data : data[0].maxTemperatureList
 			}, {
 				name : 'average salinity',
 				type : 'line',
-				stack : '总量',
+				stack : '总量7',
 				data : data[0].avgSalinityList
 			}, {
 				name : 'min salinity',
 				type : 'line',
-				stack : '总量',
+				stack : '总量8',
 				data : data[0].minSalinityList
 			}, {
 				name : 'max salinity',
 				type : 'line',
-				stack : '总量',
+				stack : '总量9',
 				data : data[0].maxSalinityList
 			} ]
 		};
